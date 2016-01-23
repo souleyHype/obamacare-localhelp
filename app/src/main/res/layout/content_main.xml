@@ -38,6 +38,7 @@
         android:text="Find"
         android:id="@+id/searchButton"
         android:layout_below="@+id/addressSearch"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:imeOptions="actionDone" />
 
 </RelativeLayout>
