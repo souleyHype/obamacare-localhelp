@@ -2,6 +2,7 @@ package souley.obamacarelocalhelp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         invalidSearchToast = Toast.makeText(context, text, duration);
 
-        searchButton.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 hideSoftKeyboard(thisActivity);
@@ -74,14 +75,18 @@ public class MainActivity extends AppCompatActivity {
                                         "Longitude: " + location.getLongitude() + "\n" +
                                         "State: " + location.getAdminArea()
                         );
+
+                        Intent DisplayLocationIntent = new Intent(thisActivity, DisplayLocationActivity.class);
+                        startActivity(DisplayLocationIntent);
                     } catch (IOException e) {
                         e.printStackTrace();
                         invalidSearchToast.show();
                     }
                 }
-
             }
-        });
+        };
+
+        searchButton.setOnClickListener(listener);
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
